@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAuth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 const firebaseConfig = {
 	apiKey: 'AIzaSyB4sDeQwAKPRvJaJRRweRC4Xl5M24zG1Z4',
 	authDomain: 'nextjs-ssr-1d48a.firebaseapp.com',
@@ -8,6 +8,8 @@ const firebaseConfig = {
 	messagingSenderId: '124391554963',
 	appId: '1:124391554963:web:16bc6154ac60a1ca2db266',
 };
+let app;
 
-const app = initializeApp(firebaseConfig);
-export const auth = initializeAuth(app);
+if (!app) app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
