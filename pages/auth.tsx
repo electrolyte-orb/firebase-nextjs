@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import { auth, db } from '../lib/firebase-admin';
+import { docs, docsResponse } from '../lib/types/docs';
 import type {
 	GetServerSideProps,
 	GetServerSidePropsContext,
 	InferGetServerSidePropsType,
 } from 'next';
 import nookies from 'nookies';
+
 interface Data {
 	data: {
 		msg: string;
-		docs?: {
-			data: string;
-		}[];
+		docs?: docsResponse[];
 	};
 }
 
@@ -40,7 +40,17 @@ export const getServerSideProps: GetServerSideProps<Data> = async (
 			const docs: any[] = [];
 
 			snapshot.forEach((doc) => {
-				docs.push({ data: doc.data().msg });
+				const {
+					createdAt: { seconds, nanoseconds },
+					msg,
+					writer,
+				} = doc.data() as docs;
+
+				docs.push({
+					msg,
+					writer,
+					createdAt: { seconds, nanoseconds },
+				} as docsResponse);
 			});
 
 			data = {
@@ -72,12 +82,18 @@ function Auth({
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<h1>Hello world</h1>
+			<h1>Auth</h1>
 			<h2>{data.msg}</h2>
 			{data.docs ? (
-				<div>{data.docs.forEach(({ data }) => data)}</div>
+				<div>
+					{data.docs.map(({ msg, writer, createdAt }, index) => (
+						<div key={index}>
+							{msg}, {writer.email}, {createdAt.nanoseconds}
+						</div>
+					))}
+				</div>
 			) : (
-				'you have no posts yet'
+				'[Error] ->' + data.msg
 			)}
 		</div>
 	);
