@@ -22,7 +22,7 @@ jobs:
           command: yarn build
       - run:
           name: Deploy to Netlify
-          command: npm i netlify-cli && netlify --help
+          command: npm i netlify-cli && npx netlify --help
 
 workflows:
   deploy_to_netlify:
