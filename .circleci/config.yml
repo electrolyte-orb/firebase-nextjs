@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
-            npm i -g netlify-cli && npx netlify --help
+            sudo npm i -g netlify-cli && npx netlify --help
             netlify status
 
 workflows:
