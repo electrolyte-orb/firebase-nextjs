@@ -13,13 +13,10 @@ jobs:
           pkg-manager: yarn-berry
           with-cache: false
       - run:
-          name: Build the project
-          command: yarn build
-      - run:
           name: Deploy to Netlify
           command: |
-            sudo npm i -g netlify-cli && npx netlify --help
-            netlify status
+            sudo npm i -g netlify-cli
+            netlify deploy --build --prod
 
 workflows:
   deploy_to_netlify:
