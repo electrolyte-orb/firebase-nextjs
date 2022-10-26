@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
-            npm i --no-save @netlify/plugin-nextjs
+            yarn add --mode=skip-build @netlify/plugin-nextjs
             sudo npm i -g netlify-cli
             netlify deploy --build --prod
 
