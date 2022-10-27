@@ -12,12 +12,19 @@ jobs:
           check-cache: always
           pkg-manager: yarn-berry
           with-cache: false
+      - restore_cache:
+          keys:
+            - v1-npm-deps
       - run:
           name: Deploy to Netlify
           command: |
             npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
             npx netlify deploy --build --prod
-
+      - save_cache:
+          name: Caching node_modules
+          key: v1-npm-deps
+          paths:
+            - node_modules/
 workflows:
   deploy_to_netlify:
     jobs:
