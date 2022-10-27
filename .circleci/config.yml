@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
-            yarn add --mode=skip-build @netlify/plugin-nextjs
+            yarn config set pnpMode loose
             sudo npm i -g netlify-cli
             netlify deploy --build --prod
 
