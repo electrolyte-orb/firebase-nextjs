@@ -13,9 +13,6 @@ jobs:
           pkg-manager: yarn-berry
           with-cache: false
       - run:
-          name: Build Next.js
-          command: yarn build
-      - run:
           name: Deploy to Netlify
           command: |
             npm i --save false --package-lock false @netlify/plugin-nextjs
