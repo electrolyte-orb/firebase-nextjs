@@ -15,10 +15,8 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
-            yarn config set pnpMode loose
             npm i --save false --package-lock false @netlify/plugin-nextjs
-            sudo npm i -g netlify-cli
-            netlify deploy --build --prod
+            yarn netlify deploy --build --prod
 
 workflows:
   deploy_to_netlify:
