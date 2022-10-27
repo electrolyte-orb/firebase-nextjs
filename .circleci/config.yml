@@ -23,7 +23,7 @@ jobs:
             npx netlify deploy --build --prod
       - save_cache:
           name: Caching node_modules
-          key: v1-npm-deps
+          key: v1-npm-deps-{{ checksum .circleci/config.yml }}
           paths:
             - ~/.npm
 workflows:
