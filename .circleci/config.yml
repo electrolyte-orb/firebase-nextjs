@@ -15,9 +15,8 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
-            npm i --save false --package-lock false @netlify/plugin-nextjs
-            sudo npm i -g netlify-cli
-            netlify deploy --build --prod
+            npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
+            npx netlify deploy --build --prod
 
 workflows:
   deploy_to_netlify:
