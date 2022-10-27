@@ -18,13 +18,14 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
+            npm cache add @netlify/plugin-nextjs netlify-cli
             npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
             npx netlify deploy --build --prod
       - save_cache:
           name: Caching node_modules
           key: v1-npm-deps
           paths:
-            - node_modules/
+            - ~/.npm
 workflows:
   deploy_to_netlify:
     jobs:
