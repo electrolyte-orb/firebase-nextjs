@@ -13,9 +13,12 @@ jobs:
           pkg-manager: yarn-berry
           with-cache: false
       - run:
+          name: Build Next.js
+          command: yarn build
+      - run:
           name: Deploy to Netlify
           command: |
-            yarn config set pnpMode loose
+            npm i --save false @netlify/plugin-nextjs
             sudo npm i -g netlify-cli
             netlify deploy --build --prod
 
