@@ -12,12 +12,12 @@ jobs:
           check-cache: always
           pkg-manager: yarn-berry
           with-cache: false
-          override-ci-command: "yarn install --immutable --mode=skip-build"
       - run:
           name: Deploy to Netlify
           command: |
             npm i --save false --package-lock false @netlify/plugin-nextjs
-            yarn netlify deploy --build --prod
+            sudo npm i -g netlify-cli
+            netlify deploy --build --prod
 
 workflows:
   deploy_to_netlify:
