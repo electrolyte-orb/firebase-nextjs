@@ -19,12 +19,12 @@ jobs:
           name: Install Netlify CLI and Plugins
           command: |
             yarn set version classic
-            yarn add @netlify/plugin-nextjs netlify-cli
+            yarn global add @netlify/plugin-nextjs netlify-cli
             yarn set version stable
       - run:
           name: Deploy to Netlify
           command: |
-            yarn netlify deploy --build --prod
+            netlify deploy --build --prod
       - save_cache:
           name: Caching node_modules
           key: v1-npm-deps-{{ checksum ".circleci/config.yml" }}
