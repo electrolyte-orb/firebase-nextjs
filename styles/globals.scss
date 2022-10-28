@@ -97,7 +97,127 @@ body {
 }
 .card {
   margin: 3rem;
+  word-break: break-all;
 }
 :-webkit-scrollbar {
   background: black;
+}
+
+button.action.sign-in {
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  user-select: none;
+  cursor: pointer;
+  overflow: hidden;
+  font-weight: 700;
+  position: relative;
+  box-shadow: 0 0 0 1px gray;
+  transition: 0.3s;
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.58, 0.03, 1, 1);
+  display: inline-block;
+  span {
+    display: block;
+    position: relative;
+    z-index: 10;
+    mix-blend-mode: difference;
+  }
+  &:hover {
+    box-shadow: 0 0 0 10px white;
+  }
+  &:hover span {
+    animation: MoveScaleUpInitial 0.3s forwards,
+      MoveScaleUpEnd 0.3s forwards 0.3s;
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  &:before {
+    content: "";
+    background: white;
+    width: 120%;
+    height: 0;
+    padding-bottom: 120%;
+    top: -110%;
+    left: -10%;
+    border-radius: 50%;
+    transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+  }
+  &:hover:before {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+  }
+  &:after {
+    content: "";
+    background: white;
+    transform: translate3d(0, -100%, 0);
+    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+  }
+  &:hover:after {
+    transform: translate3d(0, 0, 0);
+    transition-duration: 0.05s;
+    transition-delay: 0.4s;
+    transition-timing-function: linear;
+  }
+}
+@keyframes MoveScaleUpInitial {
+  to {
+    transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes MoveScaleUpEnd {
+  from {
+    transform: translate3d(0, 100%, 0) scale3d(1, 2, 1);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+button.action.sign-out {
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: white;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  transition: 0.25s linear;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  box-shadow: inset 0 0 0 0px black, 0 0 0 1px white;
+  &:hover {
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 40px black, 0 0 0 1px white;
+  }
+
+  span {
+    mix-blend-mode: difference;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    .logo {
+      font-size: 1rem;
+    }
+    .links {
+      font-size: 0.75rem;
+    }
+  }
 }

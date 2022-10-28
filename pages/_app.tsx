@@ -5,7 +5,6 @@ import { AuthProvider, Navbar, Aura } from "../components";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <Aura />
       <Navbar />
       <Component {...pageProps} />
     </AuthProvider>
