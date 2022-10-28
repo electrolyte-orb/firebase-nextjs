@@ -18,14 +18,13 @@ jobs:
       - run:
           name: Deploy to Netlify
           command: |
-            npm cache add @netlify/plugin-nextjs netlify-cli
-            npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
+            [ ! -d node_modules ] && npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
             npx netlify deploy --build --prod
       - save_cache:
           name: Caching node_modules
           key: v1-npm-deps-{{ checksum ".circleci/config.yml" }}
           paths:
-            - ~/.npm
+            - node_modules
 workflows:
   deploy_to_netlify:
     jobs:
