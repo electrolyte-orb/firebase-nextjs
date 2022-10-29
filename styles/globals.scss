@@ -29,6 +29,21 @@ body {
   margin: 3rem 0;
   text-align: center;
 }
+
+.banner {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height 50px;
+  background: #980632;
+  text-align: center;
+  &:before {
+    content: 'Beta app, may have breaking changes'
+  }
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
