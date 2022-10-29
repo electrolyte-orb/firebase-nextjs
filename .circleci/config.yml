@@ -19,7 +19,7 @@ jobs:
           name: Deploy to Netlify
           command: |
             [ ! -d node_modules ] && npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
-            env NETLIFY_SITE_ID="$NETLIFY_SITE_ID_BETA"
+            export NETLIFY_SITE_ID="$NETLIFY_SITE_ID_BETA"
             npx netlify deploy --build --prod
       - save_cache:
           name: Caching node_modules
