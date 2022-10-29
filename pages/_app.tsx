@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <Navbar />
       <Component {...pageProps} />
+      <div className="banner"></div>
     </AuthProvider>
   );
 }
