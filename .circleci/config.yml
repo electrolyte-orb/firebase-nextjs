@@ -4,7 +4,7 @@ orbs:
   node: circleci/node@5.0
 
 jobs:
-  build_deploy:
+  build_deploy_beta:
     executor: node/default
     steps:
       - checkout
@@ -19,6 +19,7 @@ jobs:
           name: Deploy to Netlify
           command: |
             [ ! -d node_modules ] && npm i --save false --package-lock false @netlify/plugin-nextjs netlify-cli
+            env NETLIFY_SITE_ID="$NETLIFY_SITE_ID_BETA"
             npx netlify deploy --build --prod
       - save_cache:
           name: Caching node_modules
@@ -26,9 +27,9 @@ jobs:
           paths:
             - node_modules
 workflows:
-  deploy_to_netlify:
+  deploy_to_netlify_beta:
     jobs:
-      - build_deploy:
+      - build_deploy_beta:
           filters:
             branches:
-              only: main
+              only: canary
