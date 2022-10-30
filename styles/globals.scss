@@ -1,104 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Inter", system-ui;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  color-scheme: dark;
-}
-body {
-  color: white;
-  background: black;
-}
-.title {
-  font-size: 5rem;
-  font-weight: 700;
-  margin: 3rem 0;
-  text-align: center;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  position: sticky;
-  top: 0;
-  transition: 100ms;
-  .logo {
-    font-weight: 500;
-    font-size: 1.5rem;
-  }
-  .links {
-    display: flex;
-    gap: 2rem;
-    .link {
-      position: relative;
-      user-select: none;
-      cursor: pointer;
-      &:hover:before {
-        width: 100%;
-      }
-      &:active:before {
-        top: 100%;
-      }
-      &:before {
-        content: "";
-        position: absolute;
-        top: calc(100% + 2px);
-        width: 0%;
-        height: 1.5px;
-        background: white;
-        transition: 100ms;
-      }
-    }
-  }
-}
-.aura {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  height: 100vh;
-  width: 100vw;
-  filter: blur(60px);
-  .circle1 {
-    position: absolute;
-    top: 8rem;
-    left: 30%;
-    height: 14rem;
-    width: 14rem;
-    background: #003282;
-    border-radius: 50%;
-    z-index: 3;
-  }
-  .circle2 {
-    position: absolute;
-    top: 8rem;
-    left: 40%;
-    height: 20rem;
-    width: 20rem;
-    background: #980632;
-    border-radius: 50%;
-    z-index: 2;
-  }
-}
-.card {
-  margin: 3rem;
-  word-break: break-all;
-}
 :-webkit-scrollbar {
   background: black;
 }
@@ -169,6 +70,9 @@ button.action.sign-in {
     transition-delay: 0.4s;
     transition-timing-function: linear;
   }
+  &[disabled] {
+    opacity: 0.5;
+  }
 }
 @keyframes MoveScaleUpInitial {
   to {
@@ -209,15 +113,5 @@ button.action.sign-out {
 
   span {
     mix-blend-mode: difference;
-  }
-}
-@media screen and (max-width: 600px) {
-  .navbar {
-    .logo {
-      font-size: 1rem;
-    }
-    .links {
-      font-size: 0.75rem;
-    }
   }
 }

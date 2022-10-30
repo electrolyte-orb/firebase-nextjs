@@ -1,3 +1,4 @@
 export * from "./AuthProvider";
 export { default as Navbar } from "./Navbar";
-export { default as Aura } from "./Aura";
+export { default as Container } from "./Container";
+export { default as Main } from "./Main";
